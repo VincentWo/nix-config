@@ -12,7 +12,10 @@
   outputs = { self, nixpkgs, home-manager, darwin }: {
     darwinConfigurations.athens = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      modules = [ ./hosts/athens/default.nix ];
+      modules = [
+        home-manager.darwinModules.home-manager
+        ./hosts/athens/default.nix
+      ];
     };
   };
 }

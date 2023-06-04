@@ -48,4 +48,14 @@
       "element"
     ];
   };
+
+  users.users.titania = {
+    name = "titania";
+    home = "/Users/titania";
+  };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.titania = import ./titania/home-manager.nix;
+  };
 }
