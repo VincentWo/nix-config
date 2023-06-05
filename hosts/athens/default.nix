@@ -43,7 +43,6 @@
   homebrew = {
     enable = true;
     casks = [
-      "visual-studio-code"
       # Matrix 
       "element"
     ];

@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-stable, ... }: {
   home = {
     stateVersion = "23.11";
   };
 
   programs = {
+    bash.enable = true;
     helix = import ./helix.nix;
     fish = {
       enable = true;
@@ -37,11 +38,18 @@
     vscode = {
       enable = true;
       package = pkgs.vscodium;
+      mutableExtensionsDir = false;
       extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
         rust-lang.rust-analyzer
         ms-toolsai.jupyter
+        mkhl.direnv
+        ms-python.python
       ];
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 }
