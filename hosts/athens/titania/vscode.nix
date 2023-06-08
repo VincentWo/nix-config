@@ -11,16 +11,20 @@
     direnv.restart.automatic = true;
     # TODO: Fill concrete path of direnv executable
     direnv.path.executable = pkgs.direnv + /bin/direnv;
-    jupyter.kernels.filter = [
-        {
-          path = "/run/current-system/sw/bin/python";
-          type = "pythonEnvironment";
-        }
-        {
-          path = "/usr/bin/python3";
-          type = "pythonEnvironment";
-        }
-    ];
+    jupyter = {
+      themeMatplotlibPlots = true;
+      enableExtendedKernelCompletions = true;
+      kernels.filter = [
+          {
+            path = "/run/current-system/sw/bin/python";
+            type = "pythonEnvironment";
+          }
+          {
+            path = "/usr/bin/python3";
+            type = "pythonEnvironment";
+          }
+      ];
+    };
   };
   extensions = with pkgs.vscode-extensions; [
     vscodevim.vim
