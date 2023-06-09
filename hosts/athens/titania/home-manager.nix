@@ -6,7 +6,13 @@
       # 0x08000100 = UTF-8
       # 0 = English
       ".CFUserTextEncoding".text = "0x08000100:0";
+      ".agda/defaults".text = ''
+        standard-library
+      '';
     };
+    packages = [
+      (pkgs.agda.withPackages (p: [ p.standard-library ]))
+    ];
   };
 
   programs = {

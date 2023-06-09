@@ -26,11 +26,12 @@
       ];
     };
   };
-  extensions = with pkgs.vscode-extensions; [
+  extensions = with pkgs.vscode-extensions; with pkgs.all-vscode-extensions; [
     vscodevim.vim
     rust-lang.rust-analyzer
     ms-toolsai.jupyter
     mkhl.direnv
     ms-python.python
+    vscode-marketplace.banacorn.agda-mode
   ];
 }

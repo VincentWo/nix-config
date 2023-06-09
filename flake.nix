@@ -8,9 +8,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, darwin }:
+  outputs = { self, nixpkgs, nix-vscode-extensions, nixpkgs-stable, home-manager, darwin }:
     {
     darwinConfigurations.athens = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
@@ -24,6 +25,7 @@
               direnv = (import nixpkgs-stable {
                 system = "aarch64-darwin";
               }).direnv;
+              all-vscode-extensions = nix-vscode-extensions.extensions.aarch64-darwin;
             })
           ] ;
         }
